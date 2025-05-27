@@ -31,6 +31,6 @@ public class DadoService {
             dadoMongoRepository.save(dadoMongo);
         }
 
-        System.out.println("✅ Dados sincronizados do MySQL para o MongoDB.");
+        System.out.println("Dados sincronizados do MySQL para o MongoDB.");
     }
 }
