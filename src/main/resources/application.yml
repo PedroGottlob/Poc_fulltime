@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/seubanco
+    url: jdbc:mysql:root@localhost:3306
     username: root
-    password: senha
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -13,7 +13,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/seumongodb
+      uri: mongodb://localhost:27017/
 
 rabbitmq:
   queue: ids-queue
@@ -21,3 +21,10 @@ rabbitmq:
   port: 5672
   username: guest
   password: guest
+
+  spring:
+    data:
+      mongodb:
+        uri: "mongodb://localhost:27017/"
+        ssl:
+          enabled: true
