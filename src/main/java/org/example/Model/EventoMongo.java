@@ -3,21 +3,24 @@ package org.example.Model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "eventos")
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Document(collection = "evento")
 public class EventoMongo {
 
     @Id
-    private String idEvento;
+    private Long idEvento;
     private String descricao;
     private int prioridade;
-    private String horario;
+    private Date horario;
 
     // Getter e Setter para idEvento
-    public String getIdEvento() {
+    public Long getIdEvento() {
         return idEvento;
     }
 
-    public void setIdEvento(String idEvento) {
+    public void setIdEvento(Long idEvento) {
         this.idEvento = idEvento;
     }
 
@@ -40,11 +43,11 @@ public class EventoMongo {
     }
 
     // Getter e Setter para horario
-    public String getHorario() {
+    public Date getHorario() {
         return horario;
     }
 
-    public void setHorario(String horario) {
+    public void setHorario(Date horario) {
         this.horario = horario;
     }
 }

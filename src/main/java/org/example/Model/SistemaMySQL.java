@@ -1,25 +1,27 @@
 package org.example.Model;
 
-// SistemaMySQL.java
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "sistema")
+@Table(name = "sistema_mysql")
 public class SistemaMySQL {
 
     @Id
-    private String idSistema;
+    @Column(name = "id_sistema")
+    private Long id_sistema;
+
     private String nomeCliente;
     private String descricao;
 
-    public String getIdSistema() {
-        return idSistema;
+    public Long getIdSistema() {
+        return id_sistema;
     }
 
-    public void setIdSistema(String idSistema) {
-        this.idSistema = idSistema;
+    public void setIdSistema(Long idSistema) {
+        this.id_sistema = idSistema;
     }
 
     public String getNomeCliente() {

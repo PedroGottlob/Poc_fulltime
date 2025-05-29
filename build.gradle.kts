@@ -19,5 +19,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("com.rabbitmq:amqp-client:5.18.0")
     runtimeOnly("com.mysql:mysql-connector-j")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }

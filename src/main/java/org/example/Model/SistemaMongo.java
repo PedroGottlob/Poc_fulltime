@@ -4,19 +4,19 @@ package org.example.Model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "sistemas")
+@Document(collection = "sistema")
 public class SistemaMongo {
 
     @Id
-    private String idSistema;
+    private Long idSistema;
     private String nomeCliente;
     private String descricao;
 
-    public String getIdSistema() {
+    public Long getIdSistema() {
         return idSistema;
     }
 
-    public void setIdSistema(String idSistema) {
+    public void setIdSistema(Long idSistema) {
         this.idSistema = idSistema;
     }
 
