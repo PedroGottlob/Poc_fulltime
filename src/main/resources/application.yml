@@ -15,9 +15,12 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/BancoPocMongo
 
+
 rabbitmq:
-  queue: ids-queue
   host: localhost
   port: 5672
   username: guest
   password: guest
+  queue: ids-queue
+  exchange: ids-exchange
+  routingKey: ids-routing-key

@@ -18,6 +18,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("com.rabbitmq:amqp-client:5.18.0")
+    implementation ("org.springframework.boot:spring-boot-starter-web")
     runtimeOnly("com.mysql:mysql-connector-j")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -25,4 +26,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }

@@ -26,38 +26,49 @@ public class IntegracaoService {
     private SistemaMongoRepository sistemaMongoRepository;
 
     public void processarId(String id) {
-        System.out.println("Processando ID recebido: " + id);
+        System.out.println(">> Iniciando processamento do ID recebido: " + id);
         Long idLong;
         try {
             idLong = Long.parseLong(id);
+            System.out.println(">> ID convertido para Long com sucesso: " + idLong);
         } catch (NumberFormatException e) {
-            System.out.println("ID inválido: " + id);
+            System.err.println(">> ERRO: ID inválido, não é um número: " + id);
             return;
         }
 
+        System.out.println(">> Buscando Evento no MySQL com ID: " + idLong);
         Optional<EventoMySQL> evento = eventoMySQLRepository.findById(idLong);
         if (evento.isPresent()) {
+            System.out.println(">> Evento encontrado no MySQL: " + evento.get());
             EventoMongo mongo = new EventoMongo();
             mongo.setIdEvento(evento.get().getIdEvento());
             mongo.setDescricao(evento.get().getDescricao());
             mongo.setPrioridade(evento.get().getPrioridade());
-            mongo.setHorario(evento.get().getHorario()); // LocalDateTime
+            mongo.setHorario(evento.get().getHorario());
             eventoMongoRepository.save(mongo);
-            System.out.println("Evento salvo no MongoDB." + mongo.getIdEvento());
+            System.out.println(">> Evento salvo no MongoDB com ID: " + mongo.getIdEvento());
+        } else {
+            System.out.println(">> Evento não encontrado no MySQL para ID: " + idLong);
         }
 
+        System.out.println(">> Buscando Sistema no MySQL com ID: " + idLong);
         Optional<SistemaMySQL> sistema = sistemaMySQLRepository.findById(idLong);
         if (sistema.isPresent()) {
+            System.out.println(">> Sistema encontrado no MySQL: " + sistema.get());
             SistemaMongo mongo = new SistemaMongo();
             mongo.setIdSistema(sistema.get().getIdSistema());
             mongo.setNomeCliente(sistema.get().getNomeCliente());
             mongo.setDescricao(sistema.get().getDescricao());
             sistemaMongoRepository.save(mongo);
-            System.out.println("Sistema salvo no MongoDB.");
+            System.out.println(">> Sistema salvo no MongoDB com ID: " + mongo.getIdSistema());
+        } else {
+            System.out.println(">> Sistema não encontrado no MySQL para ID: " + idLong);
         }
 
         if (!evento.isPresent() && !sistema.isPresent()) {
-            System.out.println("Nenhum evento ou sistema encontrado com ID: " + idLong);
+            System.out.println(">> Nenhum evento ou sistema encontrado no MySQL com o ID: " + idLong);
         }
+
+        System.out.println(">> Finalizado processamento para o ID: " + idLong);
     }
 }

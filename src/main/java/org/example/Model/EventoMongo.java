@@ -15,7 +15,7 @@ public class EventoMongo {
     private int prioridade;
     private Date horario;
 
-    // Getter e Setter para idEvento
+
     public Long getIdEvento() {
         return idEvento;
     }
@@ -24,7 +24,6 @@ public class EventoMongo {
         this.idEvento = idEvento;
     }
 
-    // Getter e Setter para descricao
     public String getDescricao() {
         return descricao;
     }
@@ -33,7 +32,6 @@ public class EventoMongo {
         this.descricao = descricao;
     }
 
-    // Getter e Setter para prioridade
     public int getPrioridade() {
         return prioridade;
     }
@@ -42,7 +40,6 @@ public class EventoMongo {
         this.prioridade = prioridade;
     }
 
-    // Getter e Setter para horario
     public Date getHorario() {
         return horario;
     }
